@@ -3,37 +3,5 @@
   
   
   
-  <entry>
-    <title>TwoMillion</title>
-    <link href="/2024/06/09/TwoMillion/"/>
-    <url>/2024/06/09/TwoMillion/</url>
-    
-    <content type="html"><![CDATA[<h1 id="TwoMillion"><a href="#TwoMillion" class="headerlink" title="TwoMillion"></a>TwoMillion</h1><p><a href="https://app.hackthebox.com/machines/TwoMillion">https://app.hackthebox.com/machines/TwoMillion</a></p><p>![[TwoMillion.png]]</p><h2 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h2><p>發現開放端口22(ssh)及80(http)</p><p>![[Pasted image 20240603030036.png]]</p><h2 id="網站"><a href="#網站" class="headerlink" title="網站"></a>網站</h2><p>![[Pasted image 20240603030613.png]]</p><p>域名解析</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo vim /etc/hosts<br></code></pre></td></tr></table></figure><p>![[Pasted image 20240603031516.png]]</p><p>發現join頁面</p><p>![[Pasted image 20240603031717.png]]</p><p>點擊join進入invite code頁面</p><p>![[Pasted image 20240603032021.png]]</p>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>getting started</title>
-    <link href="/2024/06/09/getting-started/"/>
-    <url>/2024/06/09/getting-started/</url>
-    
-    <content type="html"><![CDATA[<h1 id="ssh"><a href="#ssh" class="headerlink" title="ssh"></a>ssh</h1><p><code>ssh-keygen</code></p><p><code>save id_rsa.pub to ~/.ssh</code></p><p><code>ssh -i ~/.ssh/custom_key_name SYSUSER@IP_ADDRESS_OF_SERVER</code></p><h1 id="netcat"><a href="#netcat" class="headerlink" title="netcat"></a>netcat</h1><p><a href="https://linux.die.net/man/1/nc">https://linux.die.net/man/1/nc</a></p><p>windows<br><a href="https://nmap.org/download.html">https://nmap.org/download.html</a></p><h1 id="powercat"><a href="#powercat" class="headerlink" title="powercat"></a>powercat</h1><p><a href="https://github.com/besimorhino/powercat">https://github.com/besimorhino/powercat</a></p><h1 id="socat"><a href="#socat" class="headerlink" title="socat"></a>socat</h1><p><a href="https://linux.die.net/man/1/socat">https://linux.die.net/man/1/socat</a></p><p><a href="https://github.com/andrew-d/static-binaries">https://github.com/andrew-d/static-binaries</a></p><h1 id="tty"><a href="#tty" class="headerlink" title="tty"></a>tty</h1><p><a href="https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys/#method-2-using-socat">https://blog.ropnop.com/upgrading-simple-shells-to-fully-interactive-ttys/#method-2-using-socat</a></p><h1 id="tmux"><a href="#tmux" class="headerlink" title="tmux"></a>tmux</h1><p><code>prefix [CTRL + B]</code></p><p>open a new window<br><code>prefix + c</code></p><p>switch windows<br><code>prefix + number_of_the_windows</code></p><p>split a window vertically<br><code>prefix + %</code></p><p>switch between panes<br><code>prefix + left, right, up, down</code></p><p>cheat sheet<br><a href="https://tmuxcheatsheet.com/">https://tmuxcheatsheet.com/</a></p><h1 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h1><p>normal mode</p><p>|<code>x</code>|Cut character|<br>|<code>dw</code>|Cut word|<br>|<code>dd</code>|Cut full line|<br>|<code>yw</code>|Copy word|<br>|<code>yy</code>|Copy full line|<br>|<code>p</code>|Paste|</p><blockquote><p>Tip: We can multiply any command to run multiple times by adding a number before it. For example, ‘4yw’ would copy 4 words instead of one, and so on.</p></blockquote><table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td><code>:1</code></td><td>Go to line number 1.</td></tr><tr><td><code>:w</code></td><td>Write the file, save</td></tr><tr><td><code>:q</code></td><td>Quit</td></tr><tr><td><code>:q!</code></td><td>Quit without saving</td></tr><tr><td><code>:wq</code></td><td>Write and quit</td></tr></tbody></table><p>cheat sheet<br><a href="https://vimsheet.com/">https://vimsheet.com/</a></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>hackthebox</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
   
 </search>
