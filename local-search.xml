@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>TwoMillion</title>
+    <link href="/2024/06/09/TwoMillion/"/>
+    <url>/2024/06/09/TwoMillion/</url>
+    
+    <content type="html"><![CDATA[<h1 id="TwoMillion"><a href="#TwoMillion" class="headerlink" title="TwoMillion"></a>TwoMillion</h1><p><a href="https://app.hackthebox.com/machines/TwoMillion">https://app.hackthebox.com/machines/TwoMillion</a></p><p>![[TwoMillion.png]]</p><h2 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h2><p>發現開放端口22(ssh)及80(http)</p><p>![[Pasted image 20240603030036.png]]</p><h2 id="網站"><a href="#網站" class="headerlink" title="網站"></a>網站</h2><p>![[Pasted image 20240603030613.png]]</p><p>域名解析</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo vim /etc/hosts<br></code></pre></td></tr></table></figure><p>![[Pasted image 20240603031516.png]]</p><p>發現join頁面</p><p>![[Pasted image 20240603031717.png]]</p><p>點擊join進入invite code頁面</p><p>![[Pasted image 20240603032021.png]]</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>getting started</title>
     <link href="/2024/06/09/getting-started/"/>
     <url>/2024/06/09/getting-started/</url>
